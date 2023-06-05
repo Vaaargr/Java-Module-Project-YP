@@ -1,15 +1,31 @@
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+package models;
+
+import java.math.BigDecimal;
+import java.util.LinkedList;
+
+import models.Product;
 
 public class Bill {
-    BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-    private int peopleCount = 0;
-    private float sum = 0.0f;
-    private String textOfBill = "Добавленные товары:";
 
-    public void getPeopleCount() throws IOException {
-        System.out.println("Введите количество человек, на которых необходимо разделить чек:");
+    private int peopleCount;
+    private BigDecimal sum = new BigDecimal(0.0);
+    private StringBuilder textOfBill = new StringBuilder("Добавленные товары:");
+    private LinkedList<Product> listOfProducts = new LinkedList<>();
+
+    public Bill(int peopleCount){
+        this.peopleCount = peopleCount;
+    }
+
+    public int getPeopleCount() {
+        return peopleCount;
+    }
+
+    public void addProduct(Product product){
+        listOfProducts.add(product);
+    }
+
+    /*public void getPeopleCount() throws IOException {
+
         while (true) {
             String input = reader.readLine();
             int inputPeopleCount = 0;
@@ -23,9 +39,7 @@ public class Bill {
                 peopleCount = inputPeopleCount;
                 break;
             } else {
-                System.out.println(
-                        "Некорректное значение. Количество людей должно быть больше 1го. Повторите ввод:"
-                );
+
             }
         }
     }
@@ -41,9 +55,9 @@ public class Bill {
 
     public void calculation() {
         System.out.println(textOfBill);
-        float endPrice = sum/(float) peopleCount;
+        float endPrice = sum / (float) peopleCount;
         String currentCase = makeCase(endPrice);
-        System.out.printf("Каждый человек должен заплатить по %.2f %s",endPrice, currentCase);
+        System.out.printf("Каждый человек должен заплатить по %.2f %s", endPrice, currentCase);
     }
 
     private void makeProduct() throws IOException {
@@ -71,17 +85,6 @@ public class Bill {
         System.out.println("Товар добавлен.");
     }
 
-    private String makeCase(double endPrice) {
-        String[] buffer = String.valueOf(endPrice).split("\\.");
-        if (buffer[0].length() > 1 && buffer[0].charAt(buffer[0].length() - 2) == '1') {
-            return "рублей.";
-        } else {
-            return switch (buffer[0].charAt(buffer[0].length() - 1)) {
-                case '1' -> "рубль.";
-                case '2', '3', '4' -> "рубля.";
-                default -> "рублей.";
-            };
-        }
-    }
+    */
 }
 
