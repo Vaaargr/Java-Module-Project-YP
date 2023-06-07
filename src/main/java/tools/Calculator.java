@@ -15,7 +15,7 @@ public class Calculator {
             System.out.println("Список товаров в чеке пуст. Нечего считать.");
         } else {
             for (Product product : bill.getListOfProducts()) {
-                builder.append(product.getInformation()).append(System.lineSeparator());
+                builder.append(product.toString()).append(System.lineSeparator());
                 amount = amount.add(product.getPrice());
             }
 

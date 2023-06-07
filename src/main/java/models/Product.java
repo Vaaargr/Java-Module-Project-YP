@@ -23,7 +23,8 @@ public class Product {
         return new BigDecimal(price);
     }
 
-    public String getInformation(){
+    @Override
+    public String toString() {
         return name + " " + price;
     }
 }
