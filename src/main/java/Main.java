@@ -6,6 +6,7 @@ import Controllers.BufferReaderController;
 import builders.BillBuilder;
 import builders.ProductBuilder;
 import models.Bill;
+import tools.Calculator;
 
 public class Main {
     public static void main(String[] args) {
@@ -15,12 +16,14 @@ public class Main {
 
             do {
                 bill.addProduct(ProductBuilder.makeProduct(controller));
+                System.out.println("Товар добавлен.");
                 System.out.println(
                         "Если вы хотите продолжить добавление продуктов, введите любой символ."
                                 + System.lineSeparator()
                                 + "Для завершения ввода введите \"Завершить\"");
             } while (!controller.getString().equalsIgnoreCase("завершить"));
 
+            Calculator.countBill(bill);
 
         } catch (IOException e) {
             System.out.println("Вмешались неведомые силы и что-то пошло не так. Попробуйте запустить приложение ещё раз.");
