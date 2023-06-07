@@ -21,7 +21,7 @@ public class Calculator {
 
             amount = amount.divide(BigDecimal.valueOf(bill.getPeopleCount()), 2, RoundingMode.HALF_UP);
 
-            builder.append("Каждый человек должен заплатить по ").append(amount).append(Variator.makeCase(amount.toString())).append(System.lineSeparator());
+            builder.append("Каждый человек должен заплатить по ").append(amount).append(Variator.makeCase(amount.toString()));
             System.out.println(builder);
         }
     }
